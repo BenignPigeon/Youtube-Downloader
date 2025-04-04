@@ -536,13 +536,13 @@ echo -----------------------------------------------------
 echo           YOUTUBE DOWNLOADER - DOWNLOAD VIDEOS
 echo -----------------------------------------------------
 echo Author      : BenignPigeon
-echo Version     : 1.0.0
-echo GitHub      : INSERT LINK HERE
+echo Version     : %programVersion%
+echo GitHub      : https://github.com/BenignPigeon/Youtube-Downloader
 echo -----------------------------------------------------
 echo DESCRIPTION:
 echo This tool allows you to download videos and audio from YouTube 
 echo and other websites, with support for various formats, including:
-echo - Video  : MP4, WEBM
+echo - Video  : MP4, MKV, MOV, WEBM
 echo - Audio  : MP3, M4A
 echo -----------------------------------------------------
 echo DEPENDENCIES:
@@ -563,7 +563,7 @@ goto settings
 
 :report_issue
 ::ADD ACTUAL GITHUB
-start https://www.example.com
+start https://github.com/BenignPigeon/Youtube-Downloader/issues
 goto settings
 :comments
 

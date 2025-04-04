@@ -14,9 +14,16 @@ if %ERRORLEVEL% NEQ 0 (
         exit /b
     )
 ) 
-
-rem Settings file in the same directory as the script
-set "settings_file=%~dp0yt_settings.txt"
+:: Check if %APPDATA%\Bat-Files exists, create if it doesn't
+if not exist "%APPDATA%\Bat-Files" (
+    echo Directory "%APPDATA%\Bat-Files" does not exist. Creating now...
+    mkdir "%APPDATA%\Bat-Files"
+) 
+:: Check if %APPDATA%\Bat-Files\YouTube-Downloader exists, create if it doesn't
+if not exist "%APPDATA%\Bat-Files\YouTube-Downloader" (
+    echo Directory "%APPDATA%\Bat-Files\YouTube-Downloader" does not exist. Creating now...
+    mkdir "%APPDATA%\Bat-Files\YouTube-Downloader"
+)
 
 rem Load settings if they exist
 set "use_cookies=0"
@@ -26,8 +33,8 @@ set "output_enabled=1"
 set "output_path=%USERPROFILE%\Desktop"
 set "video_format=mp4"
 set "audio_format=mp3"
-if exist "%settings_file%" (
-    for /f "usebackq tokens=1,* delims==" %%a in ("%settings_file%") do (
+if exist "%config_file%" (
+    for /f "usebackq tokens=1,* delims==" %%a in ("%config_file%") do (
         if "%%a"=="use_cookies" set "use_cookies=%%b"
         if "%%a"=="browser_choice" set "browser_choice=%%b"
         if "%%a"=="cookie_file" set "cookie_file=%%b"
@@ -178,7 +185,7 @@ if errorlevel 1 (
     echo output_path=%output_path%
     echo video_format=%video_format%
     echo audio_format=%audio_format%
-) > "%settings_file%"
+) > "%config_file%"
 goto :eof
 
 :settings

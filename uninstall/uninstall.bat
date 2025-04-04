@@ -30,21 +30,31 @@ echo Uninstalling Youtube Downloader...
 
 :: Define paths
 set "batFilesLocal=%LOCALAPPDATA%\Bat-Files\Youtube-Downloader"
+set "batFilesRoaming=%APPDATA%\Bat-Files\Youtube-Downloader"
 set "desktopFolder=%USERPROFILE%\Desktop"
 set "startMenuFolder=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Bat-Files"
 set "shortcutName=Youtube Downloader"
 set "uninstallRegistryKey=HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\Youtube-Downloader"
 
-:: Step 1: Delete the Youtube-Downloader folder
+:: Step 1: Delete the Youtube-Downloader folder in Local
 if exist "%batFilesLocal%" (
     echo Deleting "%batFilesLocal%"...
     rmdir /S /Q "%batFilesLocal%"
-    echo Youtube-Downloader folder deleted.
+    echo Youtube-Downloader folder deleted in Local.
 ) else (
-    echo Youtube-Downloader folder not found.
+    echo Youtube-Downloader folder not found in Local.
 )
 
-:: Step 2: Delete the Youtube Downloader shortcut on the Desktop
+:: Step 2: Delete the Youtube-Downloader folder in Roaming
+if exist "%batFilesRoaming%" (
+    echo Deleting "%batFilesRoaming%"...
+    rmdir /S /Q "%batFilesRoaming%"
+    echo Youtube-Downloader folder deleted in Roaming.
+) else (
+    echo Youtube-Downloader folder not found in Roaming.
+)
+
+:: Step 3: Delete the Youtube Downloader shortcut on the Desktop
 if exist "%desktopFolder%\%shortcutName%.lnk" (
     echo Deleting "%desktopFolder%\%shortcutName%.lnk"...
     del "%desktopFolder%\%shortcutName%.lnk"
@@ -53,7 +63,7 @@ if exist "%desktopFolder%\%shortcutName%.lnk" (
     echo Shortcut on Desktop not found.
 )
 
-:: Step 3: Delete the Youtube Downloader shortcut in the Start Menu
+:: Step 4: Delete the Youtube Downloader shortcut in the Start Menu
 if exist "%startMenuFolder%\%shortcutName%.lnk" (
     echo Deleting "%startMenuFolder%\%shortcutName%.lnk"...
     del "%startMenuFolder%\%shortcutName%.lnk"
@@ -62,7 +72,7 @@ if exist "%startMenuFolder%\%shortcutName%.lnk" (
     echo Shortcut in Start Menu not found.
 )
 
-:: Step 4: Remove the uninstall registry key
+:: Step 5: Remove the uninstall registry key
 reg delete "%uninstallRegistryKey%" /f >nul 2>&1
 echo Uninstall registry key deleted (if it existed).
 

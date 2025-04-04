@@ -14,6 +14,10 @@ if %ERRORLEVEL% NEQ 0 (
         exit /b
     )
 ) 
+
+cd dependencies
+call universal-parameters.bat
+cd ..
 :: Check if %APPDATA%\Bat-Files exists, create if it doesn't
 if not exist "%APPDATA%\Bat-Files" (
     echo Directory "%APPDATA%\Bat-Files" does not exist. Creating now...

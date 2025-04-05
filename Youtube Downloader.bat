@@ -203,7 +203,7 @@ echo 4. Output Settings
 echo 5. Video Format Settings
 echo 6. Audio Format Settings
 echo 7. Update YouTube Downloader to Latest Version
-echo 7. Back to main menu
+echo 8. Back to main menu
 echo.
 
 :settings_loop

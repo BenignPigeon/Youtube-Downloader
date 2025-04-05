@@ -202,7 +202,7 @@ echo 3. Cookie Settings
 echo 4. Output Settings
 echo 5. Video Format Settings
 echo 6. Audio Format Settings
-echo 7. Update program
+echo 7. Update YouTube Downloader to Latest Version
 echo 7. Back to main menu
 echo.
 

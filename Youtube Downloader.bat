@@ -202,6 +202,7 @@ echo 3. Cookie Settings
 echo 4. Output Settings
 echo 5. Video Format Settings
 echo 6. Audio Format Settings
+echo 7. Update program
 echo 7. Back to main menu
 echo.
 
@@ -214,7 +215,12 @@ if "%settings_choice%"=="3" goto cookie_settings
 if "%settings_choice%"=="4" goto output_settings
 if "%settings_choice%"=="5" goto video_format_settings
 if "%settings_choice%"=="6" goto audio_format_settings
-if "%settings_choice%"=="7" goto menu
+if "%settings_choice%"=="7" (
+    @echo off
+    start cmd /c powershell "irm '%programUpdater%' |iex"
+    exit
+)
+if "%settings_choice%"=="8" goto menu
 
 echo Invalid choice. Please try again.
 timeout /t 2 >nul
